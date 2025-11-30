@@ -1,4 +1,4 @@
-name: Android Buildv6
+name: Android Buildv8
 
 on:
   push:
@@ -24,6 +24,9 @@ jobs:
       uses: gradle/actions/setup-gradle@v4
       with:
         gradle-version: '8.4'
+
+    - name: Make gradlew executable
+      run: chmod +x gradlew
 
     - name: Build APK
       run: ./gradlew assembleDebug
