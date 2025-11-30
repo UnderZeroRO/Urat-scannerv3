@@ -1,4 +1,4 @@
-name: Android Buildv3
+name: Android Build
 
 on:
   push:
@@ -19,8 +19,10 @@ jobs:
         distribution: temurin
         java-version: 17
 
-    - name: Install Gradle
-      uses: gradle/actions/setup-gradle@v3
+    - name: Install Gradle 8.4.1
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: 8.4.1
 
     - name: Build APK
-      run: ./gradlew assembleDebug || gradle assembleDebug
+      run: gradle assembleDebug
