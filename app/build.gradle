@@ -14,31 +14,16 @@ android {
         versionName "1.0"
     }
 
-    // restul configurației rămâne la fel
-}
+    sourceSets {
+        main.java.srcDirs = ['src/main/java']
+        main.res.srcDirs = ['src/main/res']
+        main.assets.srcDirs = ['src/main/assets']
+        main.jniLibs.srcDirs = ['src/main/jniLibs']
+    }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        debug {
-            // configurare debug
-        }
-    }
-
-    // External Native Build eliminat pentru ca folosim .so precompilate
-    // externalNativeBuild {
-    //     cmake { path "src/main/cpp/CMakeLists.txt" }
-    // }
-
-    // Fără referințe la sourceSets.main.cpp
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/java']
-            res.srcDirs = ['src/main/res']
-            assets.srcDirs = ['src/main/assets']
-            jniLibs.srcDirs = ['src/main/jniLibs']
         }
     }
 }
