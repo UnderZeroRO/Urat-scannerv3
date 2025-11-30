@@ -5,21 +5,16 @@ plugins {
 
 android {
     namespace 'com.example.serialportscannerjunsun'
-    compileSdk 34
+    compileSdk 33
 
     defaultConfig {
-        applicationId 'com.example.serialportscannerjunsun'
-        minSdk 23
-        targetSdk 34
+        applicationId "com.example.serialportscannerjunsun"
+        minSdk 26
+        targetSdk 33
         versionCode 1
-        versionName '1.0'
+        versionName "1.0"
 
-        externalNativeBuild {
-            cmake {
-                cppFlags ""
-            }
-        }
-
+        // Folosim librarii native precompilate (jniLibs)
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
@@ -30,26 +25,29 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-    }
-
-    externalNativeBuild {
-        cmake {
-            path 'src/main/cpp/CMakeLists.txt'
-            version '3.22.1'
+        debug {
+            // configurare debug
         }
     }
 
+    // External Native Build eliminat pentru ca folosim .so precompilate
+    // externalNativeBuild {
+    //     cmake { path "src/main/cpp/CMakeLists.txt" }
+    // }
+
+    // Fără referințe la sourceSets.main.cpp
     sourceSets {
         main {
+            java.srcDirs = ['src/main/java']
+            res.srcDirs = ['src/main/res']
+            assets.srcDirs = ['src/main/assets']
             jniLibs.srcDirs = ['src/main/jniLibs']
-            cpp.srcDirs = ['src/main/cpp']
         }
     }
 }
 
 dependencies {
+    implementation 'androidx.core:core-ktx:1.12.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.10'
+    implementation 'com.google.android.material:material:1.10.0'
 }
