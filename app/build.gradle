@@ -4,21 +4,18 @@ plugins {
 }
 
 android {
-    namespace 'com.example.serialportscannerjunsun'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.serialportscannerjunsun"
-        minSdk 26
-        targetSdk 33
+        minSdk 21
+        targetSdk 34
         versionCode 1
         versionName "1.0"
-
-        // Folosim librarii native precompilate (jniLibs)
-        ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a'
-        }
     }
+
+    // restul configurației rămâne la fel
+}
 
     buildTypes {
         release {
