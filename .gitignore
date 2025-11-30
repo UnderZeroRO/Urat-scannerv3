@@ -1,0 +1,20 @@
+/.gradle
+/local.properties
+/.idea
+/.DS_Store
+/build
+/captures
+.gradle
+**/build/
+.gradle/
+*/local.properties
+
+# Android Studio
+.idea/
+*.iml
+
+# Keystore
+*.jks
+
+# JNI build outputs
+app/src/main/jniLibs/**/libserial_port.so
