@@ -1,4 +1,4 @@
-name: Android Build
+name: Android Buildv3
 
 on:
   push:
@@ -13,16 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Make gradlew executable
-      run: chmod +x gradlew
-
     - name: Set up JDK
       uses: actions/setup-java@v3
       with:
         distribution: temurin
         java-version: 17
 
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2
-      with:
-        arguments: assembleDebug
+    - name: Install Gradle
+      uses: gradle/actions/setup-gradle@v3
+
+    - name: Build APK
+      run: ./gradlew assembleDebug || gradle assembleDebug
